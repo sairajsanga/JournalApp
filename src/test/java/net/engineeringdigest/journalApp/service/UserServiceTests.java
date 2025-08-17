@@ -2,6 +2,8 @@ package net.engineeringdigest.journalApp.service;
 
 import net.engineeringdigest.journalApp.Repositry.UserRepository;
 import net.engineeringdigest.journalApp.entity.usersEntity;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,14 +16,14 @@ public class UserServiceTests {
     @Autowired
     private UserRepository userRepository;
 
-
+    @Test
     public void TestfindByUserName(){
         usersEntity user = userRepository.findByUserName("Kodi");
         assertTrue(!user.getJournalentries().isEmpty());
     }
     //parameterised testing it uses source to specify the aramters in methods.
 //
-
+    @ParameterizedTest
     @ValueSource(strings = {
             "Kodi"
     })
